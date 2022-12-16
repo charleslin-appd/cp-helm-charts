@@ -55,15 +55,15 @@ cp-kafka:
     # storageClass: ""
     size: 5Gi
     disksPerBroker: 1
-  resources: {}
-  ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
-  ## and remove the curly braces after 'resources:'
-  #  limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  #  requests:
-  #   cpu: 100m
-  #   memory: 128Mi
+  resources:
+    ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
+    ## and remove the curly braces after 'resources:'
+    limits:
+      cpu: 500m
+      memory: 1200Mi
+    requests:
+      cpu: 100m
+      memory: 600Mi
   securityContext:
     runAsUser: 0
 
@@ -79,15 +79,15 @@ cp-schema-registry:
   imagePullSecrets:
   #  - name: "regcred"
   heapOptions: "-Xms512M -Xmx2048M"
-  resources: {}
-  ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
-  ## and remove the curly braces after 'resources:'
-  #  limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  #  requests:
-  #   cpu: 100m
-  #   memory: 128Mi
+  resources:
+    ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
+    ## and remove the curly braces after 'resources:'
+    limits:
+      cpu: 1000m
+      memory: 2500Mi
+    requests:
+      cpu: 100m
+      memory: 1200Mi
 
 ## ------------------------------------------------------
 ## REST Proxy
@@ -100,16 +100,16 @@ cp-kafka-rest:
   ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
   imagePullSecrets:
   #  - name: "regcred"
-  heapOptions: "-Xms512M -Xmx512M"
-  resources: {}
-  ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
-  ## and remove the curly braces after 'resources:'
-  #  limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  #  requests:
-  #   cpu: 100m
-  #   memory: 128Mi
+  heapOptions: "-Xms512M -Xmx1024M"
+  resources:
+    ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
+    ## and remove the curly braces after 'resources:'
+    limits:
+      cpu: 500m
+      memory: 1200Mi
+    requests:
+      cpu: 100m
+      memory: 600Mi
 
 ## ------------------------------------------------------
 ## Kafka Connect
@@ -122,16 +122,16 @@ cp-kafka-connect:
   ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
   imagePullSecrets:
   #  - name: "regcred"
-  heapOptions: "-Xms512M -Xmx2048M"
+  heapOptions: "-Xms512M -Xmx3072M"
   resources: {}
   ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
   ## and remove the curly braces after 'resources:'
-  #  limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  #  requests:
-  #   cpu: 100m
-  #   memory: 128Mi
+  limits:
+    cpu: 100m
+    memory: 1000Mi
+  requests:
+    cpu: 1000m
+    memory: 3500Mi
 
 ## ------------------------------------------------------
 ## KSQL Server
@@ -159,7 +159,7 @@ cp-control-center:
   ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
   imagePullSecrets:
   #  - name: "regcred"
-  heapOptions: "-Xms512M -Xmx1024M"
+  heapOptions: "-Xms512M -Xmx2048M"
   resources: {}
   ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
   ## and remove the curly braces after 'resources:'
